@@ -1,0 +1,33 @@
+This directory contains the OCkRE files which have been freed of dependencies on the rest of the Morgan pipeline. They come in form of three python modules, with two auxiliary python scripts serving as a quick way of testing the main functionality of OCkRE with no additional user input required.
+
+Dependencies:
+- Python 2.7
+- Keras 1.2.2
+- Cairocffi
+- Matplotlib
+- PIL
+- Tensorflow (functional CUDA pipeline with a discrete NVidia GPU highly recommended for training, not necessary for classification).
+- Further dependencies not met by default installation might vary depending on user's operating system/distribution. Only testing has been done on Linux Ubuntu!
+Missing type faces shouldn't lead to crashes but may lead to visually empty or garbled synthetic samples which will devaluate the training data.
+
+The three OCkRE system modules provided are as follows;
+
+- ockre.py 
+which contains the classificator function, training function, and some of the training utilities.
+
+- synthset.py
+which contains what's left of the dataset handling system; more or less just the skeletal functioning of the dataset iterator, operating in a more or less dummy mode, as all samples are always made synthetically
+
+- fakestrings.py
+contains assortment of functions for creation of synthethic text strings to be used for synthetic sample generation
+
+This release also includes two auxiliary testing scripts with no external options - they have to be manually modified for other than default functionality.
+
+- quicktest.py (run with "python2 quicktest.py")
+which initialises the OCkRE classifier, loads the packaged model weights, synthesises five training sample like images and performs classification on them, saving the results as .png raster files which show off the synthethic sample and the gold label string used for it's generation as well as OCkRE's classification of the synthethic raster image
+  
+- traintest.py (run with "python2 traintest.py")
+which initialises the OCkRE classifier and attempts to train it from the start. Log of the resulting training as well as resulting weights files are saved in img_ocr directory, which the traintest.py creates. For operatively using the weights, user has to modify quicktest.py.
+
+- densified_labeltype_best.h5
+This is a packaged model + trained weights, which should allow immediate classification.
