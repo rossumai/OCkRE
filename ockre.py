@@ -2,7 +2,10 @@
 
 '''
 This is a Morgan-customized version of Keras' image_ocr generalised to
-also handle numbers
+handle real-world data fields, especially long numbers.
+
+
+The original description, which is outdated in some senses, follows:
 
 This example uses a convolutional stack followed by a recurrent stack
 and a CTC logloss function to perform optical character recognition
@@ -19,22 +22,11 @@ callback class. After 20 epochs, longer sequences are thrown at it
 by recompiling the model to handle a wider image and rebuilding
 the word list to include two words separated by a space.
 
-The table below shows normalized edit distance values. Theano uses
-a slightly different CTC implementation, hence the different results.
-
-            Norm. ED
-Epoch |   TF   |   TH
-------------------------
-    10   0.027   0.064
-    15   0.038   0.035
-    20   0.043   0.045
-    25   0.014   0.019
-
 This requires cairo and editdistance packages:
 pip install cairocffi
 pip install editdistance
 
-Created by Mike Henry
+Originally created by Mike Henry
 https://github.com/mbhenry/
 '''
 import itertools

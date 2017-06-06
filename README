@@ -1,4 +1,20 @@
-This directory contains the OCkRE files which have been freed of dependencies on the rest of the Morgan pipeline. They come in form of three python modules, with two auxiliary python scripts serving as a quick way of testing the main functionality of OCkRE with no additional user input required.
+OCkRE is a deep neural model for OCR of image crops containing arbitrary values
+rather than making text assumptions.
+
+In an OCR pipeline, you first segment the page, detect lines, then run the OCR
+on a straight segment to transcribe text.  OCkRE does only this last part, you
+cannot use it on a whole page - it's unsuitable even for whole lines, but is
+designed to only transcribe shorter data fields.
+
+OCkRE is originally based on Keras' image_ocr.  The architecture is quite
+similar, but the data is different, synthetic data support is included, and
+more extensive augmentation is performed.
+
+OCkRE within Rossum' pipeline currently uses a tweaked architecture as well
+as significantly more advanced augmentation.  Our plan is to eventually
+synchronize our internal version and the GitHub version, but we don't have
+a timeline for that yet.
+
 
 Dependencies:
 - Python 2.7
@@ -10,6 +26,8 @@ Dependencies:
 - Further dependencies not met by default installation might vary depending on user's operating system/distribution. Only testing has been done on Linux Ubuntu!
 Missing type faces shouldn't lead to crashes but may lead to visually empty or garbled synthetic samples which will devaluate the training data.
 
+
+OCkRE comes in form of three python modules, with two auxiliary python scripts serving as a quick way of testing the main functionality of OCkRE with no additional user input required.
 The three OCkRE system modules provided are as follows;
 
 - ockre.py 
